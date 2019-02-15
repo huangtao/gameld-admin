@@ -7,6 +7,9 @@
 - 对局查询
 - 比赛管理
 
+<p>
+<img width="900" src="https://raw.githubusercontent.com/huangtao/gameld-admin/master/static/sc1.png">
+</p>
 ## Build Setup
 
 ```bash
