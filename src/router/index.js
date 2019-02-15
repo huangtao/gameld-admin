@@ -88,13 +88,13 @@ export const constantRouterMap = [
   },
 
   {
-    path: '/form',
+    path: '/layout',
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
+        path: 'Layout',
+        name: 'Layout',
+        component: () => import('@/views/layout/Layout'),
         meta: { title: '提现审批', icon: 'money' }
       }
     ]
