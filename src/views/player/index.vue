@@ -49,7 +49,7 @@
         <el-input v-model="playerForm.boxJJNum" placeholder="请输入增减数额"/>
       </el-form-item>
       <el-form-item>
-        <el-button v-show="isadmin" type="primary" @click="onBankJJ">执行增减</el-button>
+        <el-button v-show="isadmin" type="danger" @click="onBankJJ">执行增减</el-button>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onDelBankPwd">删除保险箱密码</el-button>
@@ -272,6 +272,9 @@ export default {
         this.$message.warning('查询账号后才能操作!')
         return
       }
+      this.temp_type = 'gold_change'
+      this.temp_desc = ''
+      this.dialogVisible = true
     },
     onQljzJJ() {
 
