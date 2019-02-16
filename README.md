@@ -18,7 +18,7 @@
 
 ```bash
 # Clone project
-git clone https://github.com/PanJiaChen/vue-admin-template.git
+git clone https://github.com/huangtao/gameld-admin.git
 
 # Install dependencies
 npm install
@@ -36,9 +36,24 @@ npm run build
 npm run build --report
 ```
 
-## 平台基于以下相关技术
+## 捐赠
+如果你觉得这个项目对你很有帮助，可以对作者捐赠以此鼓励！
+
+<p>
+<img width="900" src="https://raw.githubusercontent.com/huangtao/huangtao.github.io/master/img/WechatIMG1.jpeg">
+</p>
+
+## 定制开发
+如果你需要作者为你定制开发后台面板项目，请加微信洽谈(注明定制管理后台开发)！
+
+<p>
+<img width="900" src="https://raw.githubusercontent.com/huangtao/huangtao.github.io/master/img/WechatIMG2.png">
+</p>
+
+
+## 相关连接
 
 [配套服务端（基于express）](https://github.com/huangtao/admin-express)
 
-客户端[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+客户端框架[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
 
