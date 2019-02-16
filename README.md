@@ -40,14 +40,14 @@ npm run build --report
 如果你觉得这个项目对你很有帮助，可以对作者捐赠以此鼓励！
 
 <p>
-<img src="https://raw.githubusercontent.com/huangtao/huangtao.github.io/master/img/WechatIMG1.jpeg">
+<img width="300" height="400"  src="https://raw.githubusercontent.com/huangtao/huangtao.github.io/master/img/WechatIMG1.jpeg">
 </p>
 
 ## 定制开发
 如果你需要作者为你定制开发后台面板项目，请加微信洽谈(注明定制管理后台开发)！
 
 <p>
-<img src="https://raw.githubusercontent.com/huangtao/huangtao.github.io/master/img/WechatIMG2.png">
+<img width="300" height="400"  src="https://raw.githubusercontent.com/huangtao/huangtao.github.io/master/img/WechatIMG2.png">
 </p>
 
 
