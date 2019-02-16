@@ -10,6 +10,10 @@
 <p>
 <img width="900" src="https://raw.githubusercontent.com/huangtao/gameld-admin/master/static/sc1.png">
 </p>
+<p>
+<img width="900" src="https://raw.githubusercontent.com/huangtao/gameld-admin/master/static/sc2.png">
+</p>
+
 ## Build Setup
 
 ```bash
