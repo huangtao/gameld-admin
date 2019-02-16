@@ -38,6 +38,7 @@ npm run build --report
 
 ## 平台基于以下相关技术
 
+[配套服务端（基于express）](https://github.com/huangtao/admin-express)
+
 客户端[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
 
-服务端[express](https://github.com/huangtao/admin-express)
