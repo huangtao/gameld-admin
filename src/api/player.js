@@ -59,3 +59,15 @@ export function mgrId(playerid, action) {
     }
   })
 }
+
+export function jfOP(playerid, flag, value) {
+  return request({
+    url: '/player/jfop',
+    method: 'post',
+    data: {
+      playerid,
+      flag,
+      value
+    }
+  })
+}

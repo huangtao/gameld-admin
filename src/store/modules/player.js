@@ -1,4 +1,4 @@
-import { getPlayerInfo, doPay, mgrBox, mgrBag, mgrId } from '@/api/player'
+import { getPlayerInfo, doPay, mgrBox, mgrBag, mgrId, jfOP } from '@/api/player'
 
 const player = {
   state: {
@@ -27,6 +27,8 @@ const player = {
       state.sex = data.sex
       state.gold = data.gold
       state.boxGold = data.boxGold
+      state.diamond = data.diamond
+      state.qljz = data.qljz
       state.email = data.email
       state.question = data.question
       state.answer = data.answer
@@ -40,6 +42,9 @@ const player = {
     },
     SET_BOXGOLD: (state, boxGold) => {
       state.boxGold = boxGold
+    },
+    SET_QLJZ: (state, newjf) => {
+      state.qljz = newjf
     },
     SET_PERMISSION: (state, permission) => {
       state.permission = permission
@@ -116,6 +121,25 @@ const player = {
             commit('SET_PERMISSION', 4)
           } else if (reqData.action === 2) {
             commit('SET_PERMISSION', 0)
+          }
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    // 积分/勤劳奖章
+    JFOP({ commit }, reqData) {
+      const playerid = reqData.playerid.trim()
+      return new Promise((resolve, reject) => {
+        jfOP(playerid, reqData.flag, reqData.value).then(response => {
+          const data = response.data
+          if (data.dbret !== 1) {
+            reject('db return failed!')
+          }
+          if (reqData.flag === 2) {
+            commit('SET_QLJZ', data.newjf)
           }
           resolve()
         }).catch(error => {

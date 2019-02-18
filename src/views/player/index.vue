@@ -59,7 +59,7 @@
         <el-input v-model="qljz" :disabled="edit"/>
       </el-form-item>
       <el-form-item label="奖章增减:">
-        <el-input v-model="playerForm.qljz" placeholder="请输入增减数额"/>
+        <el-input v-model="playerForm.qljzJJNum" placeholder="请输入增减数额"/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onQljzJJ">执行增减</el-button>
@@ -133,6 +133,7 @@ export default {
         playerid: '',
         numid: '',
         boxJJNum: '',
+        qljzJJNum: '',
         newpassword: ''
       }
     }
@@ -277,7 +278,13 @@ export default {
       this.dialogVisible = true
     },
     onQljzJJ() {
-
+      if (this.$store.state.player.playerid === '') {
+        this.$message.warning('查询账号后才能操作!')
+        return
+      }
+      this.temp_type = 'qljz'
+      this.temp_desc = ''
+      this.dialogVisible = true
     },
     onChangePwd() {
       if (this.$store.state.player.playerid === '') {
@@ -356,6 +363,20 @@ export default {
         })
       } else if (this.temp_type === 'diamond') {
         // 改变钻石
+      } else if (this.temp_type === 'qljz') {
+        const reqData = {
+          playerid: this.$store.state.player.playerid,
+          flag: 2,
+          value: this.playerForm.qljzJJNum,
+          desc: this.temp_desc
+        }
+        this.$store.dispatch('JFOP', reqData).then(() => {
+          this.fullscreenLoading = false
+          this.$message({ message: '操作成功!', type: 'success' })
+        }).catch(() => {
+          this.fullscreenLoading = false
+          this.$message({ message: '操作失败!', type: 'success' })
+        })
       } else {
         return
       }
