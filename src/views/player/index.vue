@@ -138,6 +138,9 @@ export default {
       }
     }
   },
+  created() {
+    this.$store.state.player.commit('RESET');
+  },
   computed: {
     ...mapGetters([
       'roles'

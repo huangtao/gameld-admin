@@ -21,6 +21,23 @@ const player = {
   },
 
   mutations: {
+    RESET: (state) => {
+      state.playerid = ''
+      state.nickname = ''
+      state.numid = ''
+      state.sex = 0
+      state.gold = 0
+      state.boxGold = 0
+      state.diamond = 0
+      state.qljz = 0
+      state.email = ''
+      state.question = ''
+      state.answer = ''
+      state.machinecode = ''
+      state.realname = ''
+      state.sid = ''
+      state.permission = 0
+    },
     SET_DATA: (state, data) => {
       state.playerid = data.playerid
       state.nickname = data.nickname
