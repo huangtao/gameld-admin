@@ -316,6 +316,25 @@ export default {
       })
     },
     onSMAccount() {
+      if (this.$store.state.player.playerid === '') {
+        this.$message.warning('查询账号后才能操作!')
+        return
+      }
+      if (this.$store.state.player.machinecode.length == 0 ||
+          this.$store.state.player.machinecode == 'web') {
+        this.$message.warning('无特征网卡!');
+        return
+      }
+      const reqData = {
+        machinecode: this.$store.state.player.machinecode
+      }
+      this.fullscreenLoading = true
+      this.$store.dispatch('MachineAccount', reqData).then(() => {
+        this.fullscreenLoading = false
+      }).catch(() => {
+        this.fullscreenLoading = false
+        this.$message({ message: '查询失败!', type: 'success' })
+      })
     },
     doPay(price) {
       if (this.$store.state.player.playerid === '') {

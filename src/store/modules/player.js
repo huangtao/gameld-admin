@@ -1,4 +1,4 @@
-import { getPlayerInfo, doPay, mgrBox, mgrBag, mgrId, jfOP } from '@/api/player'
+import { getPlayerInfo, doPay, mgrBox, mgrBag, mgrId, machineAccount, payHistroy, jfOP } from '@/api/player'
 
 const player = {
   state: {
@@ -17,7 +17,9 @@ const player = {
     machinecode: '',
     realname: '',
     sid: '',
-    permission: 0
+    permission: 0,
+    machineAccount: [],
+    payHistroy: []
   },
 
   mutations: {
@@ -37,6 +39,8 @@ const player = {
       state.realname = ''
       state.sid = ''
       state.permission = 0
+      state.machineAccount = []
+      state.payHistroy = []
     },
     SET_DATA: (state, data) => {
       state.playerid = data.playerid
@@ -65,6 +69,12 @@ const player = {
     },
     SET_PERMISSION: (state, permission) => {
       state.permission = permission
+    },
+    SET_MACHINEACCOUNT: (state, result) => {
+      state.machineAccount = result
+    },
+    SET_PAYHISTROY: (state, result) => {
+      state.payHistroy = result
     }
   },
 
@@ -118,6 +128,34 @@ const player = {
           if (reqData.action === 1) {
             commit('SET_GOLD', data.gold)
           }
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    // 相同网卡账号
+    MachineAccount({ commit }, reqData) {
+      const machinecode = reqData.machinecode.trim()
+      return new Promise((resolve, reject) => {
+        machineAccount(machinecode).then(response => {
+          const data = response.data
+          commit('SET_MACHINEACCOUNT', data.result)
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    // 充值历史
+    PayHistroy({ commit }, reqData) {
+      const playerid = reqData.playerid.trim()
+      return new Promise((resolve, reject) => {
+        payHistroy(playerid).then(response => {
+          const data = response.data
+          commit('SET_PAYHISTROY', data.result)
           resolve()
         }).catch(error => {
           reject(error)

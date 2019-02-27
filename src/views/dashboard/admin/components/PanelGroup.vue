@@ -6,7 +6,7 @@
           <svg-icon icon-class="star" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">钻石消耗</div>
+          <div class="card-panel-text">平台收益</div>
           <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num"/>
         </div>
       </div>
@@ -17,7 +17,7 @@
           <svg-icon icon-class="people" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">新增用户</div>
+          <div class="card-panel-text">充值</div>
           <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num"/>
         </div>
       </div>
@@ -28,7 +28,7 @@
           <svg-icon icon-class="money" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">充值</div>
+          <div class="card-panel-text">同时在线</div>
           <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num"/>
         </div>
       </div>
@@ -39,7 +39,7 @@
           <svg-icon icon-class="peoples" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">同时在线</div>
+          <div class="card-panel-text">其他指标</div>
           <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num"/>
         </div>
       </div>

@@ -71,3 +71,23 @@ export function jfOP(playerid, flag, value) {
     }
   })
 }
+
+export function machineAccount(machinecode) {
+  return request({
+    url: '/player/machineaccount',
+    method: 'post',
+    data: {
+      machinecode
+    }
+  })
+}
+
+export function payHistroy(playerid) {
+  return request({
+    url: '/player/payhistroy',
+    method: 'post',
+    data: {
+      playerid
+    }
+  })
+}
