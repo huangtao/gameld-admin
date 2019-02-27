@@ -200,6 +200,9 @@ export default {
       }
     }
   },
+  created() {
+    this.$store.commit('CLEAR_DATA')
+  },
   methods: {
     onSubmit() {
       this.fullscreenLoading = true
@@ -291,6 +294,18 @@ export default {
         this.$message.warning('查询账号后才能操作!')
         return
       }
+      this.fullscreenLoading = true
+      const reqData = {
+        playerid: this.$store.state.player.playerid,
+        password: this.playerForm.newpassword
+      }
+      this.$store.dispatch('MgrPwd', reqData).then(() => {
+        this.fullscreenLoading = false
+        this.$message({ message: '操作成功!', type: 'success' })
+      }).catch(() => {
+        this.fullscreenLoading = false
+        this.$message({ message: '操作失败!', type: 'success' })
+      })
     },
     onFUAccount() {
       if (this.$store.state.player.playerid === '') {

@@ -36,6 +36,17 @@ export function mgrBox(playerid, action, value, desc) {
   })
 }
 
+export function mgrPwd(playerid, password) {
+  return request({
+    url: '/player/mgrpwd',
+    method: 'post',
+    data: {
+      playerid,
+      password
+    }
+  })
+}
+
 export function mgrBag(playerid, action, value, desc) {
   return request({
     url: '/player/mgrbag',

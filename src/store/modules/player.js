@@ -1,4 +1,4 @@
-import { getPlayerInfo, doPay, mgrBox, mgrBag, mgrId, jfOP } from '@/api/player'
+import { getPlayerInfo, doPay, mgrBox, mgrPwd, mgrBag, mgrId, jfOP } from '@/api/player'
 
 const player = {
   state: {
@@ -21,6 +21,24 @@ const player = {
   },
 
   mutations: {
+    CLEAR_DATA: (state) => {
+      state.playerid = ''
+      state.nickname = ''
+      state.numid = ''
+      state.sex = 0
+      state.email = ''
+      state.diamond = 0
+      state.gold = 0
+      state.boxGold = 0
+      state.qljz = 0
+      state.question = ''
+      state.answer = ''
+      state.avatar = ''
+      state.machinecode = ''
+      state.realname = ''
+      state.sid = ''
+      state.permission = 0
+    },
     SET_DATA: (state, data) => {
       state.playerid = data.playerid
       state.nickname = data.nickname
@@ -82,6 +100,18 @@ const player = {
           if (reqData.action === 1 || reqData.action === 2) {
             commit('SET_BOXGOLD', data.boxGold)
           }
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    // 复位登录密码
+    MgrPwd({ commit }, reqData) {
+      const playerid = reqData.playerid.trim()
+      return new Promise((resolve, reject) => {
+        mgrPwd(playerid, reqData.password).then(response => {
           resolve()
         }).catch(error => {
           reject(error)
