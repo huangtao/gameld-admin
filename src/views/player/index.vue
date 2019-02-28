@@ -332,9 +332,9 @@ export default {
         this.$message.warning('查询账号后才能操作!')
         return
       }
-      if (this.$store.state.player.machinecode.length == 0 ||
-          this.$store.state.player.machinecode == 'web') {
-        this.$message.warning('无特征网卡!');
+      if (this.$store.state.player.machinecode.length === 0 ||
+          this.$store.state.player.machinecode === 'web') {
+        this.$message.warning('无特征网卡!')
         return
       }
       const reqData = {

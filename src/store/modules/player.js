@@ -1,4 +1,4 @@
-import { getPlayerInfo, doPay, mgrBox, mgrBag, mgrId, machineAccount, payHistroy, jfOP } from '@/api/player'
+import { getPlayerInfo, doPay, mgrBox, mgrBag, mgrId, mgrPwd, machineAccount, payHistroy, jfOP } from '@/api/player'
 
 const player = {
   state: {
