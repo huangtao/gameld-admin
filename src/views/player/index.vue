@@ -19,6 +19,14 @@
       <el-form-item label="钻石:">
         <el-input v-model="diamond" :disabled="edit"/>
       </el-form-item>
+      <el-form-item label="充钻石:">
+        <el-button class="filter-item" type="primary" @click="payDiamond(10)">10元</el-button>
+        <el-button class="filter-item" type="primary" @click="payDiamond(20)">20元</el-button>
+      </el-form-item>
+      <el-form-item v-show="isadmin">
+        <el-button class="filter-item" type="primary" @click="payDiamond(50)">50元</el-button>
+        <el-button class="filter-item" type="primary" @click="payDiamond(100)">100元</el-button>
+      </el-form-item>
       <el-form-item label="银子:">
         <el-input v-model="gold" :disabled="edit"/>
       </el-form-item>
@@ -348,6 +356,16 @@ export default {
         this.$message({ message: '查询失败!', type: 'success' })
       })
     },
+    payDiamond(price) {
+      if (this.$store.state.player.playerid === '') {
+        this.$message.warning('查询账号后才能操作!')
+        return
+      }
+      this.temp_type = 'diamond'
+      this.temp_price = price
+      this.temp_desc = ''
+      this.dialogVisible = true
+    },
     doPay(price) {
       if (this.$store.state.player.playerid === '') {
         this.$message.warning('查询账号后才能操作!')
@@ -371,6 +389,7 @@ export default {
         const reqData = {
           playerid: this.$store.state.player.playerid,
           price: this.temp_price,
+          is_yz: 1,
           desc: this.temp_desc
         }
         this.$store.dispatch('DoPay', reqData).then(() => {
@@ -396,7 +415,20 @@ export default {
           this.$message({ message: '操作失败!', type: 'success' })
         })
       } else if (this.temp_type === 'diamond') {
-        // 改变钻石
+        // 钻石充值
+        const reqData = {
+          playerid: this.$store.state.player.playerid,
+          price: this.temp_price,
+          is_yz: 0,
+          desc: this.temp_desc
+        }
+        this.$store.dispatch('DoPay', reqData).then(() => {
+          this.fullscreenLoading = false
+          this.$message({ message: '充钻石成功!', type: 'success' })
+        }).catch(() => {
+          this.fullscreenLoading = false
+          this.$message({ message: '充钻石失败!', type: 'error' })
+        })
       } else if (this.temp_type === 'qljz') {
         const reqData = {
           playerid: this.$store.state.player.playerid,

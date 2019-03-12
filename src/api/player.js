@@ -11,13 +11,14 @@ export function getPlayerInfo(playerid, numid) {
   })
 }
 
-export function doPay(playerid, price, desc) {
+export function doPay(playerid, price, is_yz, desc) {
   return request({
     url: '/player/dopay',
     method: 'post',
     data: {
       playerid,
       price,
+      is_yz,
       desc
     }
   })

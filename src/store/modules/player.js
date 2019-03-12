@@ -59,6 +59,9 @@ const player = {
       state.sid = data.sid
       state.permission = data.permission
     },
+    SET_DIAMOND: (state, diamond) => {
+      state.diamond = diamond
+    },
     SET_GOLD: (state, gold) => {
       state.gold = gold
     },
@@ -220,10 +223,14 @@ const player = {
     DoPay({ commit }, reqData) {
       const playerid = reqData.playerid.trim()
       return new Promise((resolve, reject) => {
-        doPay(playerid, reqData.price, reqData.desc).then(response => {
+        doPay(playerid, reqData.price, reqData.is_yz, reqData.desc).then(response => {
           const data = response.data
           if (data.dbret === 1) {
-            commit('SET_BOXGOLD', data.boxGold)
+            if (reqData.is_yz) {
+              commit('SET_BOXGOLD', data.boxGold)
+            } else {
+              commit('SET_DIAMOND', data.diamond)
+            }
           } else {
             reject('db return failed!')
           }
