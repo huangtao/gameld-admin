@@ -20,11 +20,14 @@
         <el-input v-model="diamond" :disabled="edit"/>
       </el-form-item>
       <el-form-item label="充钻石:">
+        <el-button class="filter-item" type="primary" @click="payDiamond(5)">5元</el-button>
         <el-button class="filter-item" type="primary" @click="payDiamond(10)">10元</el-button>
-        <el-button class="filter-item" type="primary" @click="payDiamond(20)">20元</el-button>
       </el-form-item>
       <el-form-item v-show="isadmin">
+        <el-button class="filter-item" type="primary" @click="payDiamond(20)">20元</el-button>
         <el-button class="filter-item" type="primary" @click="payDiamond(50)">50元</el-button>
+      </el-form-item>
+      <el-form-item v-show="isadmin">
         <el-button class="filter-item" type="primary" @click="payDiamond(100)">100元</el-button>
       </el-form-item>
       <el-form-item label="银子:">
